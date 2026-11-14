@@ -1,48 +1,34 @@
 # DirtyGenerator
 
-A collection of Python and web projects for generating adult-themed phrases and related content.
+DirtyGenerator is a collection of Python and web projects for generating adult-themed phrases and related content.
 
 ## Project layout
 
 - `src/` — Python source code
+- `data/` — Text data used by the generators
 - `web/` — HTML, CSS, and JavaScript projects
 - `docs/` — Project notes and documentation
 - `tests/` — Automated checks
 
-## Run
-
-Place the project Python entry point in `src/`, then run it with:
+## Run the phrase generator
 
 ```bash
 python3 src/dirty_bbc.py
 ```
 
+The phrase collection is stored at `data/200_dirty_phrases.txt`.
+
 ## Development setup
 
-This project uses Python 3 and has no required third-party packages by default.
-Create and activate a virtual environment if you add dependencies:
+Use Python 3. The repository's current generator uses only the Python standard library.
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-=======
-A collection of NSFW phrase generators and related projects built with Python, HTML, and Markdown.
-
-## About
-
-DirtyGenerator is a place for experimental tools that create adult-themed phrases, affirmations, and web content.
-
-## Current projects
-
-- `dirty_bbc.py` — Generates randomized adult-themed phrases.
-- `README.md` — Project overview and usage notes.
-
-## Usage
-
-Run the Python script:
+If you add third-party packages, list them in `requirements.txt` and install with:
 
 ```bash
-python dirty_bbc.py
->>>>>>> origin/main
+python3 -m pip install -r requirements.txt
+```
