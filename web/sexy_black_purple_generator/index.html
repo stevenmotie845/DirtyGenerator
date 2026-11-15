@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explicit Adult Content & Story Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="ambient-glow"></div>
+    <div class="container">
+        <header>
+            <span class="badge">NSFW • Premium Edition</span>
+            <h1>Explicit Adult Content Generator</h1>
+            <p class="subtitle">Immersive Seductive Phrase & Story Engine</p>
+        </header>
+
+        <div class="cover-container">
+            <img src="https://cdnc.imagefap.com/images/full/119/159/1593652115.jpg?secure=riTNfULv6_ZQTwVYkCUdKA==,1794721085" alt="Cover" class="cover-image">
+            <div class="image-overlay"></div>
+        </div>
+
+        <div class="control-panel">
+            <div class="control-group">
+                <label for="modeSelect">Select Mode</label>
+                <select id="modeSelect">
+                    <option value="phrases">Explicit Phrases Engine</option>
+                    <option value="story">Character Story Mode</option>
+                </select>
+            </div>
+            <div class="control-group" id="countGroup">
+                <label for="countInput">Output Count</label>
+                <input type="number" id="countInput" value="50" min="1" max="200">
+            </div>
+            <button id="generateBtn" class="primary-btn">
+                <span>Generate Content</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+
+        <div class="output-section">
+            <div class="output-header">
+                <h2>Generated Output</h2>
+                <span id="itemCountBadge" class="count-badge">0 items</span>
+            </div>
+            <div id="outputContainer" class="output-box">
+                Select your parameters and click "Generate Content" to begin...
+            </div>
+            <button id="copyBtn" class="secondary-btn" style="display:none;">
+                <span>Copy to Clipboard</span>
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

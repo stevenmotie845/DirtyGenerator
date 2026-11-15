@@ -3,7 +3,7 @@
 # ============================================================
 
 # Save plain text files (.txt)
-SAVE_TXT = True
+SAVE_TXT = False
 
 # Save structured CSV files (.csv)
 # Set to True to enable CSV export
