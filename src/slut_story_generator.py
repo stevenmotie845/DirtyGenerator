@@ -8,6 +8,7 @@ One cock color per story. Expanded dirty_ass. Menu + 50-phrase generator.
 
 import random
 import sys
+from datetime import datetime
 
 # ============================================================
 # 50 GIRL NAMES
@@ -323,7 +324,15 @@ DIRTY_ASS = [
     "her messy, gaping fuck-tunnel",
     "her spit-slick, open asshole",
     "her bruised, cum-leaking hole",
-    "her floppy, used asshole"
+    "her floppy, used asshole",
+    "her stretched out gaping asshole that winked and drooled cum",
+    "her ruined, wide-open asshole that stayed gaped",
+    "her soft, permanently stretched fuck-tunnel",
+    "her glossy, swollen, gaping hole",
+    "her loose, cum-leaking asshole that wouldn't close",
+    "her wrecked anal ring that pulsed open",
+    "her deep, ruined ass-tunnel dripping thick cum",
+    "her open, spit-shined, gaping asshole"
 ]
 
 # ============================================================
@@ -439,7 +448,23 @@ EXTRA_FILTH = [
     "Her makeup was a complete mess of spit, tears, and semen.",
     "She was gagging on cock the entire time.",
     "They turned her upside down and throated her until she choked.",
-    "They turned her upside down and face fucked her while she watched."
+    "They turned her upside down and face fucked her while she watched.",
+    "She held her mouth open like a bukkake bowl while dozens of men unloaded on her face and tongue.",
+    "Everyone came on her face and in her open mouth; she kept it wide like a good cock-craving slut and swallowed every drop.",
+    "Her face was completely painted white and her mouth overflowed with cum that she drank down.",
+    "She sucked every dick first, then knelt with her tongue out and collected load after load in her bukkake bowl.",
+    "Fifty or more loads hit her cheeks, forehead, and open mouth until she looked like a glazed cumdump.",
+    "She stayed perfectly still, mouth open, and took every rope like the desperate slut she was.",
+    "Cum ran into her eyes and down her chin while she kept her mouth open as their collective bukkake bowl.",
+    "By the end her face was a thick mask of cum and she had swallowed so many loads her stomach felt heavy.",
+    "She gagged hard every time a cock bottomed out in her throat, spit pouring down her chin.",
+    "He face-fucked her until she gagged and a mouthful of spit and bile came up around his cock.",
+    "She puked a little when the cock punched the back of her throat, but he kept fucking her face through it.",
+    "Spit and throat slime poured out of her as she gagged and nearly threw up on his cock.",
+    "He didn’t stop when she started heaving — he used the mess as extra lube and kept face-fucking her.",
+    "Her stretched out gaping asshole winked and drooled cum long after they pulled out.",
+    "Her asshole stayed wide open, soft, and continuously leaking.",
+    "Her gaped and loose asshole stayed open like a wet mouth, showing everyone how thoroughly it had been used."
 ]
 
 # ============================================================
@@ -657,7 +682,52 @@ def generate_dirty_sentences(n=50):
         "I stayed upside down with my legs forced back while they used my throat like a hole.",
         "Cum covered my face, filled my mouth, and leaked from my stretched out gaping asshole.",
         "I was a worthless sissy whore getting my face and ass wrecked by that big black cock.",
-        "My whorish red lipstick was completely destroyed by the constant face fucking."
+        "My whorish red lipstick was completely destroyed by the constant face fucking.",
+        "I held my mouth open like a bukkake bowl while fifty men lined up and unloaded on my face and tongue.",
+        "Everyone came on my face and in my open mouth; I kept it wide like a good cock-craving slut and swallowed every single drop.",
+        "There were over sixty loads. My face was completely painted white and my mouth was an overflowing bowl of cum that I drank down without spilling.",
+        "I sucked every dick in the room first, then knelt with my tongue out and let them all finish on my face and in my bukkake bowl.",
+        "Load after load hit my cheeks, forehead, and open mouth until I looked like a glazed cumdump. I swallowed the whole bowl when they were done.",
+        "Fifty to eighty cocks used my face as a target. I stayed perfectly still, mouth open, and took every rope like the desperate slut I was.",
+        "My face was dripping. Cum ran into my eyes and down my chin while I kept my mouth open as their collective bukkake bowl.",
+        "I sucked them all hard first so the loads would be bigger, then collected everything in my mouth and on my face before swallowing the entire mess.",
+        "They treated my open mouth like a communal cum bowl. One after another they stepped up, stroked, and dumped straight onto my tongue.",
+        "By the end my face was a thick mask of cum and I had swallowed so many loads my stomach felt heavy. I still licked the last drops off my lips.",
+        "My stretched out gaping asshole winked and drooled cum long after he pulled out.",
+        "That cock left my asshole ruined — wide open, soft, and continuously leaking.",
+        "My gaped and loose asshole stayed open like a wet mouth, showing everyone how thoroughly it had been used.",
+        "I could feel cool air inside my stretched out gaping asshole; it wouldn’t close.",
+        "Cum poured out of my gaping asshole in thick strands every time I clenched.",
+        "My asshole was so stretched it looked permanently open, red, and shiny with spit and cum.",
+        "They kept my cheeks spread so everyone could stare at my wrecked, gaping hole.",
+        "My stretched out gaping asshole pulsed and fluttered, still trying to close around nothing.",
+        "After they finished, my asshole stayed wide and loose, a clear invitation for the next cock.",
+        "I reached back and felt how open I was — my fingers slid into my stretched out gaping asshole with almost no resistance.",
+        "Thick cum leaked from my gaped hole onto the floor in slow, heavy drops.",
+        "My hole was a glossy, swollen, permanently stretched mess by the time they were done.",
+        "I pushed out and showed them my stretched out gaping asshole, letting the cum run freely.",
+        "He face-fucked me with that big black cock until spit ran in sheets down my chin.",
+        "I gagged hard every time that big white cock bottomed out in my throat.",
+        "My eyes watered and my mascara ran while he used my throat like a pussy.",
+        "Spit bubbles formed at the corners of my mouth as I gagged on his thick cock.",
+        "He held my head still and face-fucked me through the gagging until I was a drooling mess.",
+        "I choked and gagged but he never slowed down — he just kept driving that cock deeper.",
+        "Thick strings of spit connected my lips to his cock every time he pulled back.",
+        "My throat made wet, ugly sounds while he face-fucked me without mercy.",
+        "I was gagging so hard my whole body jerked, but I still kept my mouth open for more.",
+        "He slapped his cock against my tongue between thrusts just to watch me drool and gasp.",
+        "He face-fucked me so deep I gagged until a mouthful of spit and bile came up around his cock.",
+        "I puked a little when that big black cock punched the back of my throat, but he kept fucking my face through it.",
+        "Spit and throat slime poured out of me as I gagged and nearly threw up on his cock.",
+        "He didn’t stop when I started heaving — he used the mess as extra lube and kept face-fucking me.",
+        "I coughed up thick spit and a bit of puke while he held my head and forced his cock back in.",
+        "My throat rebelled and I gagged hard enough to bring something up, yet I still swallowed around his cock afterward.",
+        "He pulled out just long enough for me to spit the mess onto the floor, then shoved back in and continued face-fucking me.",
+        "I was a ruined, puking, drooling face-fuck hole by the time he finished with my throat.",
+        "I sucked every cock first, then knelt as their bukkake bowl while fifty loads painted my face and filled my mouth. I swallowed everything.",
+        "My stretched out gaping asshole leaked the whole time they were covering my face in cum.",
+        "They face-fucked me until I gagged and nearly puked, then made me open my mouth again so the next men could use me as a cum bowl.",
+        "By the end my face was a thick mask of cum, my throat was raw from gagging, and my asshole was still gaping open and dripping."
     ]
 
     selected = random.sample(templates, min(n, len(templates)))
@@ -671,15 +741,27 @@ def generate_dirty_sentences(n=50):
 
 
 # ============================================================
+# SAVE TO TXT
+# ============================================================
+def save_to_txt(content: str, prefix: str) -> str:
+    """Save content to a timestamped .txt file and return the filename."""
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"{prefix}_{timestamp}.txt"
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(content)
+    return filename
+
+
+# ============================================================
 # MENU
 # ============================================================
 def show_menu():
     print("\n" + "=" * 60)
     print("  SLUT STORY GENERATOR")
     print("=" * 60)
-    print("1. Generate short filthy stories (5)")
-    print("2. Generate 50 dirty first-person sentences")
-    print("3. Generate both")
+    print("1. Generate short filthy stories (5) + save to txt")
+    print("2. Generate 50 dirty first-person sentences + save to txt")
+    print("3. Generate both + save both to txt")
     print("4. Exit")
     print("=" * 60)
 
@@ -690,14 +772,30 @@ def main():
         choice = input("Choose an option (1-4): ").strip()
 
         if choice == "1":
-            print("\n" + generate_multiple_stories(5))
+            stories = generate_multiple_stories(5)
+            print("\n" + stories)
+            filename = save_to_txt(stories, "slut_stories")
+            print(f"\n[Saved to {filename}]")
+
         elif choice == "2":
+            sentences = generate_dirty_sentences(50)
             print("\n--- 50 Dirty Sentences ---\n")
-            print(generate_dirty_sentences(50))
+            print(sentences)
+            filename = save_to_txt(sentences, "dirty_sentences")
+            print(f"\n[Saved to {filename}]")
+
         elif choice == "3":
-            print("\n" + generate_multiple_stories(5))
+            stories = generate_multiple_stories(5)
+            sentences = generate_dirty_sentences(50)
+            print("\n" + stories)
             print("\n--- 50 Dirty Sentences ---\n")
-            print(generate_dirty_sentences(50))
+            print(sentences)
+
+            story_file = save_to_txt(stories, "slut_stories")
+            sentence_file = save_to_txt(sentences, "dirty_sentences")
+            print(f"\n[Stories saved to {story_file}]")
+            print(f"[Sentences saved to {sentence_file}]")
+
         elif choice == "4":
             print("\nBye, you filthy thing.")
             sys.exit(0)
