@@ -4,11 +4,32 @@ slut_story_generator.py
 Creates short filthy stories + vivid dirty sentence generator.
 Titles go in front of names (sissy Ashley, prostitute Trina, etc.).
 One cock color per story. Expanded dirty_ass. Menu + 50-phrase generator.
+Supports .txt and structured .csv export (controlled by settings.py).
 """
 
 import random
 import sys
+import csv
+import os
 from datetime import datetime
+
+# Import settings (with safe defaults if file is missing)
+try:
+    from settings import (
+        SAVE_TXT,
+        SAVE_CSV,
+        DEFAULT_STORY_COUNT,
+        DEFAULT_SENTENCE_COUNT,
+        OUTPUT_FOLDER,
+        CSV_ENCODING,
+    )
+except ImportError:
+    SAVE_TXT = True
+    SAVE_CSV = False
+    DEFAULT_STORY_COUNT = 5
+    DEFAULT_SENTENCE_COUNT = 50
+    OUTPUT_FOLDER = ""
+    CSV_ENCODING = "utf-8"
 
 # ============================================================
 # 50 GIRL NAMES
@@ -471,6 +492,7 @@ EXTRA_FILTH = [
 # STORY GENERATOR (one color per story)
 # ============================================================
 def generate_story():
+    """Return a dict with structured fields + full story text."""
     title = random.choice(TITLES)
     name = random.choice(NAMES)
     full_name = f"{title} {name}"
@@ -490,13 +512,15 @@ def generate_story():
 
     # One color only for the whole story
     if random.random() < 0.55:
+        cock_color = "black"
         cock1 = random.choice(BLACK_COCKS)
         cock2 = random.choice(BLACK_COCKS)
     else:
+        cock_color = "white"
         cock1 = random.choice(WHITE_COCKS)
         cock2 = random.choice(WHITE_COCKS)
 
-    story = (
+    full_text = (
         f"{full_name} showed up at {place} {clothing}, already looking like a {role}. "
         f"The air smelled of {smell}. "
         f"They put her {position} and the {term} started. "
@@ -507,14 +531,35 @@ def generate_story():
         f"{reaction} "
         f"By the end she was nothing but a used, cum-covered {role} who had come for {reason}."
     )
-    return " ".join(story.split())
+    full_text = " ".join(full_text.split())
+
+    return {
+        "title": title,
+        "name": name,
+        "full_name": full_name,
+        "role": role,
+        "place": place,
+        "clothing": clothing,
+        "position": position,
+        "cock_color": cock_color,
+        "cock1": cock1,
+        "cock2": cock2,
+        "dirty_ass": dirty_ass,
+        "fluid": fluid,
+        "term": term,
+        "full_story": full_text,
+    }
 
 
-def generate_multiple_stories(n=5):
-    stories = []
-    for i in range(n):
-        stories.append(f"--- Story {i+1} ---\n{generate_story()}\n")
-    return "\n".join(stories)
+def generate_multiple_stories(n=None):
+    """Generate n stories. Returns (list_of_dicts, formatted_text)."""
+    if n is None:
+        n = DEFAULT_STORY_COUNT
+    stories_data = [generate_story() for _ in range(n)]
+    formatted = "\n".join(
+        f"--- Story {i+1} ---\n{s['full_story']}\n" for i, s in enumerate(stories_data)
+    )
+    return stories_data, formatted
 
 
 # ============================================================
@@ -741,28 +786,87 @@ def generate_dirty_sentences(n=50):
 
 
 # ============================================================
-# SAVE TO TXT
+# SAVE HELPERS
 # ============================================================
-def save_to_txt(content: str, prefix: str) -> str:
-    """Save content to a timestamped .txt file and return the filename."""
+def _make_filename(prefix: str, ext: str) -> str:
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"{prefix}_{timestamp}.txt"
+    name = f"{prefix}_{timestamp}.{ext}"
+    if OUTPUT_FOLDER:
+        os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+        return os.path.join(OUTPUT_FOLDER, name)
+    return name
+
+
+def save_to_txt(content: str, prefix: str) -> str:
+    """Save plain text content to a timestamped .txt file."""
+    filename = _make_filename(prefix, "txt")
     with open(filename, "w", encoding="utf-8") as f:
         f.write(content)
     return filename
+
+
+def save_stories_to_csv(stories_data: list[dict], prefix: str = "slut_stories") -> str:
+    """Save structured story data to CSV."""
+    filename = _make_filename(prefix, "csv")
+    fieldnames = [
+        "title", "name", "full_name", "role", "place", "clothing",
+        "position", "cock_color", "cock1", "cock2", "dirty_ass",
+        "fluid", "term", "full_story"
+    ]
+    with open(filename, "w", newline="", encoding=CSV_ENCODING) as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in stories_data:
+            writer.writerow(row)
+    return filename
+
+
+def save_sentences_to_csv(sentences_text: str, prefix: str = "dirty_sentences") -> str:
+    """Save numbered dirty sentences to CSV."""
+    filename = _make_filename(prefix, "csv")
+    lines = [line.strip() for line in sentences_text.splitlines() if line.strip()]
+    with open(filename, "w", newline="", encoding=CSV_ENCODING) as f:
+        writer = csv.writer(f)
+        writer.writerow(["number", "phrase"])
+        for line in lines:
+            if ". " in line:
+                num, phrase = line.split(". ", 1)
+                writer.writerow([num, phrase])
+            else:
+                writer.writerow(["", line])
+    return filename
+
+
+def save_outputs(stories_data=None, stories_text=None, sentences_text=None):
+    """Save according to settings. Returns list of saved filenames."""
+    saved = []
+    if stories_text and SAVE_TXT:
+        saved.append(save_to_txt(stories_text, "slut_stories"))
+    if stories_data and SAVE_CSV:
+        saved.append(save_stories_to_csv(stories_data))
+    if sentences_text and SAVE_TXT:
+        saved.append(save_to_txt(sentences_text, "dirty_sentences"))
+    if sentences_text and SAVE_CSV:
+        saved.append(save_sentences_to_csv(sentences_text))
+    return saved
 
 
 # ============================================================
 # MENU
 # ============================================================
 def show_menu():
+    csv_status = "ON" if SAVE_CSV else "OFF"
+    txt_status = "ON" if SAVE_TXT else "OFF"
     print("\n" + "=" * 60)
     print("  SLUT STORY GENERATOR")
     print("=" * 60)
-    print("1. Generate short filthy stories (5) + save to txt")
-    print("2. Generate 50 dirty first-person sentences + save to txt")
-    print("3. Generate both + save both to txt")
+    print(f"1. Generate short filthy stories ({DEFAULT_STORY_COUNT})")
+    print(f"2. Generate {DEFAULT_SENTENCE_COUNT} dirty first-person sentences")
+    print("3. Generate both")
     print("4. Exit")
+    print("-" * 60)
+    print(f"  TXT saving: {txt_status}   |   CSV saving: {csv_status}")
+    print("  (edit settings.py to change)")
     print("=" * 60)
 
 
@@ -772,29 +876,33 @@ def main():
         choice = input("Choose an option (1-4): ").strip()
 
         if choice == "1":
-            stories = generate_multiple_stories(5)
-            print("\n" + stories)
-            filename = save_to_txt(stories, "slut_stories")
-            print(f"\n[Saved to {filename}]")
+            stories_data, stories_text = generate_multiple_stories()
+            print("\n" + stories_text)
+            saved = save_outputs(stories_data=stories_data, stories_text=stories_text)
+            for f in saved:
+                print(f"[Saved to {f}]")
 
         elif choice == "2":
-            sentences = generate_dirty_sentences(50)
-            print("\n--- 50 Dirty Sentences ---\n")
+            sentences = generate_dirty_sentences(DEFAULT_SENTENCE_COUNT)
+            print("\n--- Dirty Sentences ---\n")
             print(sentences)
-            filename = save_to_txt(sentences, "dirty_sentences")
-            print(f"\n[Saved to {filename}]")
+            saved = save_outputs(sentences_text=sentences)
+            for f in saved:
+                print(f"[Saved to {f}]")
 
         elif choice == "3":
-            stories = generate_multiple_stories(5)
-            sentences = generate_dirty_sentences(50)
-            print("\n" + stories)
-            print("\n--- 50 Dirty Sentences ---\n")
+            stories_data, stories_text = generate_multiple_stories()
+            sentences = generate_dirty_sentences(DEFAULT_SENTENCE_COUNT)
+            print("\n" + stories_text)
+            print("\n--- Dirty Sentences ---\n")
             print(sentences)
-
-            story_file = save_to_txt(stories, "slut_stories")
-            sentence_file = save_to_txt(sentences, "dirty_sentences")
-            print(f"\n[Stories saved to {story_file}]")
-            print(f"[Sentences saved to {sentence_file}]")
+            saved = save_outputs(
+                stories_data=stories_data,
+                stories_text=stories_text,
+                sentences_text=sentences,
+            )
+            for f in saved:
+                print(f"[Saved to {f}]")
 
         elif choice == "4":
             print("\nBye, you filthy thing.")
